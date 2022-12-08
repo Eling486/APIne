@@ -13,6 +13,8 @@
 ## 快速安装
 
 ``` bash
+git clone https://github.com/Eling486/APIne.git
+cd APIne
 yarn
 
 # Development environment
