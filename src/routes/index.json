@@ -1,0 +1,19 @@
+{
+    "routes": {
+        "/": {
+            "path": "index",
+            "active": true
+        },
+        "error": {
+            "active": false
+        },
+        "user": {
+            "login": {
+                "active": true
+            },
+            "validate": {
+                "active": true
+            }
+        }
+    }
+}

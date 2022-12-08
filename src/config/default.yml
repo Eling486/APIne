@@ -1,0 +1,9 @@
+development:
+  http: true
+  https: false
+  port: [3000, 443]
+
+production:
+  http: false
+  https: true
+  port: [80, 443]
