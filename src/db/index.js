@@ -1,7 +1,13 @@
-const orm = require('./orm')
+const mysql = require('./mysql')
 
 dbName = 'database'
 
-const db = new orm('mysql', dbName)
+/**
+ * ORM (Removed)
+ */
+// const orm = require('./orm')
+// const db = new orm('mysql', dbName)
+
+const db = new mysql(dbName)
 
 module.exports = db;

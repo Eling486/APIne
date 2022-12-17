@@ -1,22 +1,23 @@
 const mysql = require('mysql');
+const logger = require('../logger')
+
+const core = global.config.db.core
 
 const config = {
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    port: 11073,
-    timezone: "08:00"
+    host: global.config.db[core].host,
+    user: global.config.db[core].user,
+    password: global.config.db[core].password,
+    port: global.config.db[core].port,
+    timezone: global.config.db[core].timezone,
+    database: global.config.db.db_name
 }
 
 class DB {
     constructor(database) {
-        this.database = database;
         this.config = config;
-        this.config.database = database
         this.pool = null
         this.mysql = mysql
         this.createPool()
-        return this
     }
 
     createPool(){
@@ -24,6 +25,14 @@ class DB {
             this.pool.end()
         }
         this.pool = mysql.createPool(this.config)
+        this.pool.getConnection(function (err, connection) {
+            if (err) {
+                logger.error(err.sqlMessage)
+                return false
+            }
+            connection.release();
+            return true
+        })
     }
 
     query(sql) {
