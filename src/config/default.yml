@@ -2,8 +2,26 @@ development:
   http: true
   https: false
   port: [3000, 443]
+  db:
+    core: mysql
+    db_name: database
+    mysql:
+      host: localhost
+      user: root
+      password: root
+      port: 3306
+      timezone: 08:00
 
 production:
   http: false
   https: true
   port: [80, 443]
+  db:
+    core: mysql
+    db_name: database
+    mysql:
+      host: localhost
+      user: root
+      password: root
+      port: 3306
+      timezone: 08:00

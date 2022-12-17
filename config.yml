@@ -1,5 +1,14 @@
 development:
   port: 3000
+  db:
+    core: mysql
+    db_name: lost_and_found
+    mysql:
+      host: localhost
+      user: root
+      password: root
+      port: 11073
+      timezone: 08:00
 
 production:
   port: [80, 443]

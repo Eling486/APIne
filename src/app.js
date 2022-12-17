@@ -4,13 +4,13 @@ const http = require('http');
 const https = require('https');
 const fs = require('fs')
 const path = require('path')
-const config = require('./config');
 const { normalizePort } = require('./utils/network');
 const onFinished = require('on-finished');
 const { sendJSON } = require('./response')
 
 // Logger
 global.logger = require('./logger')
+global.config = require('./config');
 
 // Database
 global.db = require('./db')
@@ -21,8 +21,8 @@ app.set('x-powered-by', false)
 
 let httpServer, httpsServer
 
-if (config.http) {
-    let httpPort = normalizePort(config.port[0] || config.port);
+if (global.config.http) {
+    let httpPort = normalizePort(global.config.port[0] || global.config.port);
     app.set('http_port', httpPort);
     httpServer = http.createServer(app);
     httpServer.listen(httpPort);
@@ -36,8 +36,8 @@ if (config.http) {
     });
 }
 
-if (config.https) {
-    let httpsPort = normalizePort(config.port[1] || config.port);
+if (global.config.https) {
+    let httpsPort = normalizePort(global.config.port[1] || global.config.port);
     app.set('https_port', httpsPort);
     httpsServer = https.createServer(app);
     httpsServer.listen(httpsPort);
@@ -178,9 +178,9 @@ app.use(function (req, res, next) {
         code: -404
     })
 })
-
+/*
 process.on('uncaughtException', (err) => {
     global.logger.error(err);
 });
-
+*/
 module.exports = app
