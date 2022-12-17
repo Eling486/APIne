@@ -4,4 +4,4 @@ logs
 node_modules/
 test/
 config.yml
-db/orm/
+src/db/orm/
