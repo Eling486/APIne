@@ -16,7 +16,9 @@ const consoleFormat = format.printf((info) => {
         return `[${level}] ${info.timestamp} ${info.message.data.ip}: ${info.message.data.url} ${statusCodeColorized} | ${codeColorized} ${info.message.data.msg}`
     }
     if(info.level == 'error'){
-        return colorizer.colorize('error', `[${level}] ${info.timestamp}: ${info.message}`)
+        let level = colorizer.colorize('error', 'ERROR')
+        let content = colorizer.colorize('error', `${info.timestamp}: ${info.message}`)
+        return `[${level}] ${content}`
     }
     return `[${level}] ${info.timestamp}: ${info.message}`
 })

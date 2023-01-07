@@ -27,7 +27,7 @@ class DB {
         this.pool = mysql.createPool(this.config)
         this.pool.getConnection(function (err, connection) {
             if (err) {
-                logger.error(err.sqlMessage)
+                logger.error(`Database: ${err.sqlMessage || err.code || err}`)
                 return false
             }
             connection.release();
