@@ -16,12 +16,15 @@
 git clone https://github.com/Eling486/APIne.git
 cd APIne
 yarn
+npm install -g pm2
 
 # Development environment
 yarn dev
 
 # OR production environment
 yarn start
+# AND stop the app
+yarn stop
 ```
 
 ## 统一状态码

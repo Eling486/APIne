@@ -4,7 +4,8 @@
   "description": "",
   "main": "./src/app.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node ./src/app.js",
+    "start": "cross-env NODE_ENV=production pm2 start ./src/app.js -n APIne",
+    "stop": "pm2 stop APIne",
     "dev": "nodemon ./src/app.js"
   },
   "keywords": [],
