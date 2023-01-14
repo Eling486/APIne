@@ -3,11 +3,17 @@ const fs = require('fs');
 const path = require('path');
 
 let config
+if(!fs.existsSync('config.yml')){
+    console.log(fs.writeFileSync('config.yml', ''))
+}
 let CONFIG_FILE = fs.readFileSync('config.yml', 'utf8')
 let CONFIG_DEFAULT = yaml.load(fs.readFileSync('./src/config/default.yml', 'utf8'))
 
 let configDecoded = yaml.load(CONFIG_FILE)
 
+if (!configDecoded) {
+    configDecoded = CONFIG_DEFAULT
+}
 if (!configDecoded.production && !configDecoded.development) {
     configDecoded = CONFIG_DEFAULT
 }
